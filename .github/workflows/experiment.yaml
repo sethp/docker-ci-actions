@@ -33,7 +33,10 @@ jobs:
         run: |
           echo "hi this is macOS"
           
-
+      - name: upterm
+        if: startsWith(matrix.os, 'macos')
+        uses: lhotari/action-upterm@v1
+        
       - name: Run a multi-line script
         run: |
           echo "Hello `uname -a`"
