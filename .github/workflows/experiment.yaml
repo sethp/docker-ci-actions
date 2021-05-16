@@ -31,11 +31,19 @@ jobs:
       - name: setup macOS
         if: startsWith(matrix.os, 'macos')
         run: |
-          echo "hi this is macOS"
+          sysctl kern.hv_support
+        
+          brew install --cask --no-quarantine docker
           
-      - name: upterm
-        if: startsWith(matrix.os, 'macos')
-        uses: lhotari/action-upterm@v1
+          sudo /bin/mkdir -p /Library/PrivilegedHelperTools
+          sudo /bin/cp /Applications/Docker.app/Contents/Library/LaunchServices/com.docker.vmnetd /Library/PrivilegedHelperTools/
+          # TODO: Get the com.docker.vmnetd.plist out of the binary?
+          # or put it inline here
+          
+          
+     # - name: upterm
+     #   if: startsWith(matrix.os, 'macos')
+     #   uses: lhotari/action-upterm@v1
         
       - name: Run a multi-line script
         run: |
