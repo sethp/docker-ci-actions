@@ -66,6 +66,7 @@ jobs:
                   <key>Version</key>
                   <string>59</string>
           </dict>
+          </plist>
           EOF
           
           sudo /bin/chmod 544 /Library/PrivilegedHelperTools/com.docker.vmnetd
