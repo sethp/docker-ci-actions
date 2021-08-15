@@ -77,7 +77,7 @@ jobs:
           
           echo "-- Starting Docker.app..."
           
-          open -g -a Docker.app
+          open -g /Applications/Docker.app
           
           i=0
           while ! docker system info &>/dev/null; do
