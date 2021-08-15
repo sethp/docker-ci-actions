@@ -35,6 +35,8 @@ jobs:
         
           brew install --cask --no-quarantine docker
           
+          VmnetdVersion=$(cat /Applications/Docker.app/Contents/Info.plist | tail -5 | head -1 | cut -d '>' -f 2 | cut -d '<' -f 1)
+          
           sudo /bin/mkdir -p /Library/PrivilegedHelperTools
           sudo /bin/cp /Applications/Docker.app/Contents/Library/LaunchServices/com.docker.vmnetd /Library/PrivilegedHelperTools/
           # TODO: Get the com.docker.vmnetd.plist out of the binary somehow?
@@ -64,7 +66,7 @@ jobs:
                           </dict>
                   </dict>
                   <key>Version</key>
-                  <string>59</string>
+                  <string>${VmnetdVersion}</string>
           </dict>
           </plist>
           EOF
